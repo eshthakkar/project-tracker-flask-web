@@ -8,6 +8,7 @@ app = Flask(__name__)
 def home():
     student_info = hackbright.show_all_students()
     project_info = hackbright.show_all_projects()
+    print student_info, project_info
     return render_template("index.html", student_info=student_info, project_info=project_info)
 
 @app.route("/student")

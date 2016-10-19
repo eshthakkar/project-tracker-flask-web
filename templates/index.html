@@ -4,7 +4,17 @@
     <title>Home</title>
   </head>
     <body>
-        {{ student_info }}   
-       {{ project_info }}    
+      <h2>Student List:</h2>
+      <ul>
+        {% for student in student_info %}
+          <li><a href="/student?github={{ student[2] }}">{{student[0]}} {{student[1]}}</a></li>
+        {% endfor %}
+      </ul>   
+      <h2>Project List:</h2>
+      <ul>
+        {% for project in project_info %}
+          <li><a href="/project?title={{ project }}">{{ project }}</a></li>
+        {% endfor %}
+      </ul>     
   </body>
 </html>

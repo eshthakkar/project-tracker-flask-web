@@ -128,14 +128,22 @@ def show_all_students():
         SELECT * FROM students
         """
     db_cursor = db.session.execute(QUERY)
-    rows = db.cursor.fetchall()
+    rows = db_cursor.fetchall()
+    student_list = []
+    for row in rows:
+        student_list.append(row[0:3])
+    return student_list
  
 def show_all_projects():
     QUERY = """
         SELECT * FROM projects
         """
     db_cursor = db.session.execute(QUERY)
-    rows = db.cursor.fetchall()
+    rows = db_cursor.fetchall()
+    project_list = []
+    for row in rows:
+        project_list.append(row[1])
+    return project_list
 
 def handle_input():
     """Main loop.
