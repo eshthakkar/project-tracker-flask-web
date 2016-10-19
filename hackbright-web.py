@@ -81,6 +81,21 @@ def project_added():
     return render_template("project_add_success.html", title=title, desc=desc,
         max_grade=max_grade)
 
+
+@app.route("/grade-add")
+def grade_add():
+    """Displays form to add/update grade for a student project using their github"""
+
+    students = hackbright.show_all_students()
+    projects = hackbright.show_all_projects()
+    return render_template("grade_add.html", students=students, projects=projects)
+
+
+@app.route("/grade-added")
+def grade_added():
+    pass
+
+
 if __name__ == "__main__":
     hackbright.connect_to_db(app)
     app.run(debug=True)

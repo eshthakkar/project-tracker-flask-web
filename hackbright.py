@@ -107,6 +107,17 @@ def assign_grade(github, title, grade):
     print "Successfully assigned grade of %s for %s in %s" % (
         grade, github, title)
 
+def update_grade(github, title, grade):
+    """Update a student's grade for an assignment"""
+
+    QUERY = """
+            UPDATE Grades SET :grade
+            WHERE title = :title AND github = :github
+    """
+
+    db_cursor = db.session.execute(QUERY, {'github': github, 'title': title, 'grade': grade})
+    db.session.commit()
+
 def get_grades_by_github(github):
     """Get a list of all grades for a student by their github username"""
     QUERY = """
